@@ -16,15 +16,7 @@
               @ViewBag.Error
             </div>
         }
-
-    @using (Html.BeginForm("Calculate", "Home"))
-    {
-        <input type="number" name="sequenceNumber" />
-        <label>@Html.RadioButton("sequence", "c"); AAA</label>
-        @Html.RadioButton("sequence", "d");
-
-    }
-    
+        
 <form action="/Home/Calculate">
     <h2>Enter number: <input type="number" name="sequenceNumber" /> </h2>
     <h2>Chose sequence to display: </h2>
