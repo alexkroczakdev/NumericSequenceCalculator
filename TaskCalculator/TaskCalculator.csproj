@@ -154,7 +154,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ICalculateSequence.cs" />
-    <Compile Include="Interfaces\IDisplaySequence.cs" />
     <Compile Include="Interfaces\IValidateNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -6,6 +6,9 @@ namespace TaskCalculator.Controllers
 {
     public class HomeController : Controller
     {
+        IValidateNumber Validator;
+        ICalculateSequence Calculator;
+
         public ActionResult Index()
         {
             if(TempData["Error"] != null)
@@ -29,18 +32,16 @@ namespace TaskCalculator.Controllers
             return View();
         }
         public ActionResult Calculate(double? sequenceNumber, string sequenceChoice)
-        {           
-            IValidateNumber validator = new ValidateNumber();
-            var isValidated = validator.ValidateInputNumber(sequenceNumber);
-            if (isValidated == false)
+        {   
+            Validator = new ValidateNumber();
+            if (Validator.ValidateInputNumber(sequenceNumber) == false)
             {
                 TempData["Error"] = "The number is invalid";
                 return RedirectToAction("Index");
             }
 
-            var calculator = SetCalculator(sequenceChoice);
-            var seqnumber = (int)sequenceNumber;
-            TempData["Sequence"] = calculator.Calculate(seqnumber);
+            SetCalculator(sequenceChoice);
+            TempData["Sequence"] = Calculator.Calculate((int)sequenceNumber);
 
             return RedirectToAction("Sequence");
         }
@@ -54,22 +55,25 @@ namespace TaskCalculator.Controllers
             return View("Sequence");
         }
 
-        private ICalculateSequence SetCalculator(string sequenceChoice)
-        {
-            ICalculateSequence calculator;
+        private void SetCalculator(string sequenceChoice)
+        {            
             switch (sequenceChoice)
             {
-                case "odd": calculator = new OddSequence();break;
-                case "even": calculator = new EvenSequence(); break;
-                case "c": calculator = new CSequence(); break;
-                case "e": calculator = new ESequence(); break;
-                case "z": calculator = new ZSequence(); break;
-                case "fibonacci": calculator = new FibonacciSequence(); break;
-
-                default: calculator = new Sequence();break;
+                case "odd": Calculator = new OddSequence();
+                    break;
+                case "even": Calculator = new EvenSequence();
+                    break;
+                case "c": Calculator = new CSequence();
+                    break;
+                case "e": Calculator = new ESequence();
+                    break;
+                case "z": Calculator = new ZSequence();
+                    break;
+                case "fibonacci": Calculator = new FibonacciSequence();
+                    break;
+                default: Calculator = new Sequence();
+                    break;
             }
-            
-            return calculator;
         }
         
 
