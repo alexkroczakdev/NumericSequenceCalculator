@@ -11,11 +11,10 @@
 
    
 @if (ViewBag.Error != null)
-{ <div class="alert alert-danger">
-              @Html.ValidationMessage("Error")
-              @ViewBag.Error
-            </div>
-        }
+    { <div class="alert alert-danger">
+        @ViewBag.Error
+      </div>
+     }
         
 <form action="/Home/Calculate">
     <h2>Enter number: <input type="number" name="sequenceNumber" /> </h2>

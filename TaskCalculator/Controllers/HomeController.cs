@@ -29,9 +29,7 @@ namespace TaskCalculator.Controllers
             return View();
         }
         public ActionResult Calculate(double? sequenceNumber, string sequenceChoice)
-        {
-            ICalculateSequence calculator = new Sequence();
-                        
+        {           
             IValidateNumber validator = new ValidateNumber();
             var isValidated = validator.ValidateInputNumber(sequenceNumber);
             if (isValidated == false)
@@ -40,9 +38,38 @@ namespace TaskCalculator.Controllers
                 return RedirectToAction("Index");
             }
 
+            var calculator = SetCalculator(sequenceChoice);
             var seqnumber = (int)sequenceNumber;
+            TempData["Sequence"] = calculator.Calculate(seqnumber);
 
-            return View("Index");
+            return RedirectToAction("Sequence");
+        }
+
+        public ActionResult Sequence()
+        {
+            if (TempData["Sequence"] != null)
+            {
+                ViewBag.Sequence = TempData["Sequence"].ToString();
+            }
+            return View("Sequence");
+        }
+
+        private ICalculateSequence SetCalculator(string sequenceChoice)
+        {
+            ICalculateSequence calculator;
+            switch (sequenceChoice)
+            {
+                case "odd": calculator = new OddSequence();break;
+                case "even": calculator = new EvenSequence(); break;
+                case "c": calculator = new CSequence(); break;
+                case "e": calculator = new ESequence(); break;
+                case "z": calculator = new ZSequence(); break;
+                case "fibonacci": calculator = new FibonacciSequence(); break;
+
+                default: calculator = new Sequence();break;
+            }
+            
+            return calculator;
         }
         
 
