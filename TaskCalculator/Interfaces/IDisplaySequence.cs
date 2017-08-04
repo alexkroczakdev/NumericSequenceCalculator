@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TaskCalculator.Interfaces
 {
-    interface IDispalySequence
+    public interface IDisplaySequence
     {
+        string GetSequence(List<int> sequence);
     }
 }

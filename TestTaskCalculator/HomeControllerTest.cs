@@ -16,7 +16,7 @@ namespace TestTaskCalculator
         {
             var controller = new HomeController();
             
-            controller.Calculate(-6);
+            controller.Calculate(-6, null);
 
             Assert.IsNotNull(controller.TempData.ContainsKey("Error"));
 

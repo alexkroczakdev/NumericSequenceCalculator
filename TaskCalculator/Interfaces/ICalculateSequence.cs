@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TaskCalculator.Interfaces
 {
-    interface ICalculateSequence
+    public interface ICalculateSequence
     {
+        string Calculate(int number);
     }
 }

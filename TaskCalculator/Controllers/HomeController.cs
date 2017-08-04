@@ -28,8 +28,10 @@ namespace TaskCalculator.Controllers
         {
             return View();
         }
-        public ActionResult Calculate(double? sequenceNumber)
+        public ActionResult Calculate(double? sequenceNumber, string sequenceChoice)
         {
+            ICalculateSequence calculator = new Sequence();
+                        
             IValidateNumber validator = new ValidateNumber();
             var isValidated = validator.ValidateInputNumber(sequenceNumber);
             if (isValidated == false)
@@ -38,10 +40,10 @@ namespace TaskCalculator.Controllers
                 return RedirectToAction("Index");
             }
 
+            var seqnumber = (int)sequenceNumber;
 
             return View("Index");
         }
-
         
 
 

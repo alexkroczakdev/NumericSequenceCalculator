@@ -141,13 +141,20 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BuisnessLayer\CSequence.cs" />
+    <Compile Include="BuisnessLayer\ESequence.cs" />
+    <Compile Include="BuisnessLayer\EvenSequence.cs" />
+    <Compile Include="BuisnessLayer\FibonacciSequence.cs" />
+    <Compile Include="BuisnessLayer\OddSequence.cs" />
+    <Compile Include="BuisnessLayer\Sequence.cs" />
     <Compile Include="BuisnessLayer\ValidateNumber.cs" />
+    <Compile Include="BuisnessLayer\ZSequence.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\ICalculateSequence.cs" />
-    <Compile Include="Interfaces\IDispalySequence.cs" />
+    <Compile Include="Interfaces\IDisplaySequence.cs" />
     <Compile Include="Interfaces\IValidateNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
