@@ -49,7 +49,6 @@
     <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="HomeControllerTest.cs" />
     <Compile Include="OddSequenceTest.cs" />
     <Compile Include="SequenceTest.cs" />
     <Compile Include="EvenSequenceTest.cs" />

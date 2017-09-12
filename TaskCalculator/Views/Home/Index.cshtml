@@ -8,34 +8,26 @@
 </div>
 
 <div>
-
-   
-@if (ViewBag.Error != null)
-    { <div class="alert alert-danger">
-        @ViewBag.Error
-      </div>
-     }
-        
-<form action="/Home/Calculate">
-    <h2>Enter number: <input type="number" name="sequenceNumber" /> </h2>
-    <h2>Chose sequence to display: </h2>
-        <p><input type="radio" value="default" name="sequenceChoice"/> All numbers up to and including the number entered</p>
-        <p><input type="radio" value="odd" name="sequenceChoice"/> All odd numbers up to and including the number entered</p>
-        <p><input type="radio" value="even" name="sequenceChoice"/> All even numbers up to and including the number entered</p>
-        <p>
-            <input type="radio" value="c" name="sequenceChoice"/> All numbers up to and including the number entered, except
-            when, a number is a multiple of 3 output C
-        </p>
-        <p>
-            <input type="radio" value="e" name="sequenceChoice"/>All numbers up to and including the number entered, except
-            when, a number is a multiple of 5 output E"
-        </p>
-        <p>
-            <input type="radio" value="z" name="sequenceChoice"/> All numbers up to and including the number entered, except
-            when, a number is a multiple of both 3 and 5 output Z
-        </p>
-        <p><input type="radio" value="fibonacci" name="sequenceChoice"/> All fibonacci number up to and including the number entered</p>
-
+     @using (Html.BeginForm("Calculate", "Home", FormMethod.Post))
+     {
+        <h2>Enter number: @Html.TextBox("sequenceNumber")</h2>
+        <h2>Chose sequence to display: </h2>
+        @Html.RadioButton("sequenceChoice", "default", true)
+        @:All numbers up to and including the number entered <br />
+        @Html.RadioButton("sequenceChoice", "odd", false)
+        @:All odd numbers up to and including the number entered <br />
+        @Html.RadioButton("sequenceChoice", "even", false)
+        @:All even numbers up to and including the number entered <br />
+        @Html.RadioButton("sequenceChoice", "cez", false)
+        @:All numbers up to and including the number entered, except when:
+        <ul>
+            <li>a number is a multiple of 3 output C</li>
+            <li>a number is a multiple of 5 output E</li>
+            <li>a number is a multiple of both 3 and 5 output</li>
+        </ul>
+        @Html.RadioButton("sequenceChoice", "fibonacci", false)
+        @:All fibonacci number up to and including the number entered
         <input type="submit" class="btn btn-primary btn-lg" value="Calculate sequence" />
-</form>
+     }
+
 </div>

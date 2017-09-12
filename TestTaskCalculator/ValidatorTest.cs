@@ -15,10 +15,10 @@ namespace TestTaskCalculator
             var validator = new ValidateNumber();
 
             //act
-            result = validator.ValidateInputNumber(-5);
+            result = validator.ValidateInputNumber(5);
 
             //assert
-            Assert.IsFalse(result, "Given number is negative");
+            Assert.IsTrue(result, "Given number is positive");
         }
 
         [TestMethod]
@@ -29,24 +29,10 @@ namespace TestTaskCalculator
             var validator = new ValidateNumber();
 
             //act
-            result = validator.ValidateInputNumber(5.3);
+            result = validator.ValidateInputNumber(0);
 
             //assert
             Assert.IsFalse(result, "Given number is not whole number");
-        }
-
-        [TestMethod]
-        public void ValidateInputNumber_NotAcceptNulls()
-        {
-            //arrange
-            bool result = false;
-            var validator = new ValidateNumber();
-
-            //act
-            result = validator.ValidateInputNumber(null);
-
-            //assert
-            Assert.IsFalse(result, "Given number is null");
         }
     }
 }

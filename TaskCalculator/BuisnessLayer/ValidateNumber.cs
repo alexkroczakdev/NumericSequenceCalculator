@@ -5,9 +5,9 @@ namespace TaskCalculator.BuisnessLayer
 {
     public class ValidateNumber : IValidateNumber
     {
-        public bool ValidateInputNumber(double? input)
+        public bool ValidateInputNumber(UInt32 input)
         {
-            if (input < 0 || input % 1 != 0 || input == null)
+            if (input == 0)
                 return false;
             else
                 return true;

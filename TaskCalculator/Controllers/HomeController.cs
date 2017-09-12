@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
 using TaskCalculator.BuisnessLayer;
 using TaskCalculator.Interfaces;
 
@@ -11,11 +13,7 @@ namespace TaskCalculator.Controllers
 
         public ActionResult Index()
         {
-            if(TempData["Error"] != null)
-            {
-                ViewBag.Error = TempData["Error"].ToString();
-            }           
-            return View();
+           return View();
         }
 
         public ActionResult About()
@@ -31,14 +29,15 @@ namespace TaskCalculator.Controllers
         {
             return View();
         }
-        public ActionResult Calculate(double? sequenceNumber, string sequenceChoice)
-        {   
+
+        [HandleError(ExceptionType = typeof(ArgumentException), View ="InvalidInputError")]
+        public ActionResult Calculate(UInt32 sequenceNumber, string sequenceChoice)
+        {
+
             Validator = new ValidateNumber();
-            if (Validator.ValidateInputNumber(sequenceNumber) == false)
-            {
-                TempData["Error"] = "The number is invalid";
-                return RedirectToAction("Index");
-            }
+            if (!Validator.ValidateInputNumber(sequenceNumber))
+                return View("InvalidInputError");
+            
 
             SetCalculator(sequenceChoice);
             TempData["Sequence"] = Calculator.Calculate((int)sequenceNumber);

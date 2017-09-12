@@ -8,6 +8,6 @@ namespace TaskCalculator.Interfaces
 {
     public interface IValidateNumber
     {
-        bool ValidateInputNumber(double? input);
+        bool ValidateInputNumber(UInt32 input);
     }
 }
