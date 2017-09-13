@@ -62,11 +62,7 @@ namespace TaskCalculator.Controllers
                     break;
                 case "even": Calculator = new EvenSequence();
                     break;
-                case "c": Calculator = new CSequence();
-                    break;
-                case "e": Calculator = new ESequence();
-                    break;
-                case "z": Calculator = new ZSequence();
+                case "zce": Calculator = new ZCESequence();
                     break;
                 case "fibonacci": Calculator = new FibonacciSequence();
                     break;

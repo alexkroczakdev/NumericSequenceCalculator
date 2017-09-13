@@ -2,7 +2,7 @@
 
 namespace TaskCalculator.BuisnessLayer
 {
-    public class ZSequence: Sequence
+    public class ZCESequence: Sequence
     {
         public override string Calculate(int number)
         {
@@ -10,6 +10,14 @@ namespace TaskCalculator.BuisnessLayer
             if (number % 5 == 0 && number % 3 == 0)
             {
                 return "Z";
+            }            
+            if (number % 3 == 0)
+            {
+                return "C";
+            }
+            if (number % 5 == 0)
+            {
+                return "E";
             }
             return base.Calculate(number); ;
         }        

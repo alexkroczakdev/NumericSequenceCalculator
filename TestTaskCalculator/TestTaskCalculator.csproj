@@ -52,10 +52,8 @@
     <Compile Include="OddSequenceTest.cs" />
     <Compile Include="SequenceTest.cs" />
     <Compile Include="EvenSequenceTest.cs" />
-    <Compile Include="CSequenceTest.cs" />
-    <Compile Include="ESequenceTest.cs" />
     <Compile Include="FibonacciSequenceTest.cs" />
-    <Compile Include="ZSequenceTest.cs" />
+    <Compile Include="ZCESequenceTest.cs" />
     <Compile Include="ValidatorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

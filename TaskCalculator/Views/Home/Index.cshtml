@@ -12,21 +12,21 @@
      {
         <h2>Enter number: @Html.TextBox("sequenceNumber")</h2>
         <h2>Chose sequence to display: </h2>
-        @Html.RadioButton("sequenceChoice", "default", true)
-        @:All numbers up to and including the number entered <br />
-        @Html.RadioButton("sequenceChoice", "odd", false)
-        @:All odd numbers up to and including the number entered <br />
-        @Html.RadioButton("sequenceChoice", "even", false)
-        @:All even numbers up to and including the number entered <br />
-        @Html.RadioButton("sequenceChoice", "cez", false)
-        @:All numbers up to and including the number entered, except when:
-        <ul>
-            <li>a number is a multiple of 3 output C</li>
-            <li>a number is a multiple of 5 output E</li>
-            <li>a number is a multiple of both 3 and 5 output</li>
-        </ul>
-        @Html.RadioButton("sequenceChoice", "fibonacci", false)
-        @:All fibonacci number up to and including the number entered
+        <p> @Html.RadioButton("sequenceChoice", "default", true)
+            All numbers up to and including the number entered </p>
+        <p>@Html.RadioButton("sequenceChoice", "odd", false)
+           All odd numbers up to and including the number entered</p>
+        <p>@Html.RadioButton("sequenceChoice", "even", false)
+           All even numbers up to and including the number entered </p>            
+        <p>@Html.RadioButton("sequenceChoice", "zce", false)
+           All numbers up to and including the number entered, except when:</p>            
+            <ul>
+                <li>a number is a multiple of 3 output C</li>
+                <li>a number is a multiple of 5 output E</li>
+                <li>a number is a multiple of both 3 and 5 output</li>
+            </ul>
+        <p>@Html.RadioButton("sequenceChoice", "fibonacci", false)
+         All fibonacci number up to and including the number entered</p>
         <input type="submit" class="btn btn-primary btn-lg" value="Calculate sequence" />
      }
 
