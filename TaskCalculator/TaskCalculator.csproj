@@ -141,12 +141,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="BuisnessLayer\EvenSequence.cs" />
-    <Compile Include="BuisnessLayer\FibonacciSequence.cs" />
-    <Compile Include="BuisnessLayer\OddSequence.cs" />
-    <Compile Include="BuisnessLayer\Sequence.cs" />
+    <Compile Include="BuisnessLayer\Sequences\EvenSequence.cs" />
+    <Compile Include="BuisnessLayer\FactorySequence.cs" />
+    <Compile Include="BuisnessLayer\Sequences\FibonacciSequence.cs" />
+    <Compile Include="BuisnessLayer\Sequences\OddSequence.cs" />
+    <Compile Include="BuisnessLayer\Sequences\Sequence.cs" />
     <Compile Include="BuisnessLayer\ValidateNumber.cs" />
-    <Compile Include="BuisnessLayer\ZCESequence.cs" />
+    <Compile Include="BuisnessLayer\Sequences\ZCESequence.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -195,7 +196,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Instruction.cshtml" />
-    <Content Include="Views\Home\Sequence.cshtml" />
+    <Content Include="Views\Home\ViewSequence.cshtml" />
     <Content Include="Views\Shared\InvalidInputError.cshtml" />
   </ItemGroup>
   <ItemGroup>

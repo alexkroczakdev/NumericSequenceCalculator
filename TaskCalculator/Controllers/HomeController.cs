@@ -9,11 +9,14 @@ namespace TaskCalculator.Controllers
     public class HomeController : Controller
     {
         IValidateNumber Validator;
-        ICalculateSequence Calculator;
+        ICalculateSequence Sequence;
+        Dictionary<string, ICalculateSequence> SequenceList;
 
         public ActionResult Index()
         {
-           return View();
+            SequenceList = new Dictionary<string, ICalculateSequence>();
+            Session["SequenceList"] = SequenceList;
+            return View();
         }
 
         public ActionResult About()
@@ -33,47 +36,38 @@ namespace TaskCalculator.Controllers
         [HandleError(ExceptionType = typeof(ArgumentException), View ="InvalidInputError")]
         public ActionResult Calculate(UInt32 sequenceNumber, string sequenceChoice)
         {
-
+           
             Validator = new ValidateNumber();
             if (!Validator.ValidateInputNumber(sequenceNumber))
                 return View("InvalidInputError");
-            
 
-            SetCalculator(sequenceChoice);
-            TempData["Sequence"] = Calculator.Calculate((int)sequenceNumber);
+            CheckIfAlreadyExist(sequenceChoice);
 
-            return RedirectToAction("Sequence");
+            TempData["Sequence"] = SequenceList[sequenceChoice].Calculate((int)sequenceNumber);
+
+            return RedirectToAction("ViewSequence");
         }
 
-        public ActionResult Sequence()
+        public ActionResult ViewSequence()
         {
             if (TempData["Sequence"] != null)
             {
                 ViewBag.Sequence = TempData["Sequence"].ToString();
             }
-            return View("Sequence");
+            return View("ViewSequence");
         }
 
-        private void SetCalculator(string sequenceChoice)
-        {            
-            switch (sequenceChoice)
+        private void CheckIfAlreadyExist(string sequenceChoice)
+        {
+            SequenceList = Session["SequenceList"] as Dictionary<string, ICalculateSequence>;
+
+            if (!SequenceList.ContainsKey(sequenceChoice))
             {
-                case "odd": Calculator = new OddSequence();
-                    break;
-                case "even": Calculator = new EvenSequence();
-                    break;
-                case "zce": Calculator = new ZCESequence();
-                    break;
-                case "fibonacci": Calculator = new FibonacciSequence();
-                    break;
-                default: Calculator = new Sequence();
-                    break;
+                Sequence = FactorySequence.GetSequence(sequenceChoice);
+                SequenceList.Add(sequenceChoice, Sequence);
+                Session["SequenceList"] = SequenceList;
             }
         }
-        
-
-
-
 
     }
 }
